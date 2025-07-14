@@ -1,9 +1,20 @@
 services:
   ftp:
-    build: .
+    image: fauria/vsftpd
     container_name: ftp-server
+    restart: always
     ports:
       - "21:21"
       - "21100-21110:21100-21110"
+    environment:
+      FTP_USER: "ftpuser"
+      FTP_PASS: "ftppassword"
+      PASV_ADDRESS: "10.22.1.31"   # Replace with your server IP
+      PASV_ENABLE: "YES"
+      PASV_ADDR_RESOLVE: "NO"
+      PASV_MIN_PORT: "21100"
+      PASV_MAX_PORT: "21110"
+      LOG_STDOUT: "true"
     volumes:
-      - ./ftpdata:/home/ftpuser/ftp
+      - ./ftpdata:/home/vsftpd
+
