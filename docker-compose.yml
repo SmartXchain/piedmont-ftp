@@ -1,6 +1,6 @@
 services:
   ftp:
-    image: fauria/vsftpd
+    build: .
     container_name: ftp-server
     restart: always
     ports:
@@ -16,7 +16,7 @@ services:
       PASV_MAX_PORT: "21110"
       LOG_STDOUT: "true"
       LOCAL_UMASK: "0002"
-      FILE_OPEM_MODE: "0664"
+      FILE_OPEN_MODE: "0664"
     volumes:
       - ./ftpdata:/home/vsftpd
 
