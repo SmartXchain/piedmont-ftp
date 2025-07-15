@@ -6,7 +6,9 @@ RUN apt-get update && \
     apt-get install -y vsftpd && \
     rm -rf /var/lib/apt/lists/*
 
-
+RUN mkdir -p /var/run/vsftpd/empty
+RUN chown root:root /var/run/vsftpd/empty
+RUN chmod 555 /var/run/vsftpd/empty
 # Add vsftpd config file
 COPY vsftpd.conf /etc/vsftpd.conf
 
