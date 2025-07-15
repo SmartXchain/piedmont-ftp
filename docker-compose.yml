@@ -15,6 +15,8 @@ services:
       PASV_MIN_PORT: "21100"
       PASV_MAX_PORT: "21110"
       LOG_STDOUT: "true"
+      LOCAL_UMASK: "0002"
+      FILE_OPEM_MODE: "0664"
     volumes:
       - ./ftpdata:/home/vsftpd
 
